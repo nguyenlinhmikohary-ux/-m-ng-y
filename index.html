@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>12 Ngày Gửi Anh 💙</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fdf6f8;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #e75480;
+    }
+    .gift {
+      border: 2px dashed #f08cae;
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 500px;
+      background: #ffffff;
+    }
+    .locked {
+      opacity: 0.5;
+      color: #888;
+    }
+    video {
+      width: 100%;
+      margin-top: 10px;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>💌 12 Ngày Gửi Anh</h1>
+<p>Mỗi ngày mở một món quà nhé.</p>
+
+<div id="content"></div>
+
+<script>
+  const gifts = [
+    { date: "2026-02-14", title: "Ngày 1 – Valentine 💝", message: "Valentine đầu tiên mình xa nhau, nhưng tim em luôn ở cạnh anh.", video: "" },
+    { date: "2026-02-15", title: "Ngày 2", message: "Hôm nay anh có mệt không? Nhớ giữ sức nhé.", video: "" },
+    { date: "2026-02-16", title: "Ngày 3", message: "Mỗi ngày trôi qua là một ngày gần anh hơn.", video: "" },
+    { date: "2026-02-17", title: "Ngày 4", message: "Có những lúc em chỉ muốn nói là em rất tự hào về anh.", video: "" },
+    { date: "2026-02-18", title: "Ngày 5", message: "Cố lên thêm chút nữa thôi nha 💙", video: "" },
+    { date: "2026-02-19", title: "Ngày 6", message: "Anh không hề cô đơn đâu, vì lúc nào em cũng nghĩ về anh.", video: "" },
+    { date: "2026-02-20", title: "Ngày 7", message: "Một tuần rồi đó, em nhớ anh nhiều lắm.", video: "" },
+    { date: "2026-02-21", title: "Ngày 8", message: "Cảm ơn anh vì đã cố gắng từng ngày.", video: "" },
+    { date: "2026-02-22", title: "Ngày 9", message: "Chờ anh cũng là một cách yêu anh.", video: "" },
+    { date: "2026-02-23", title: "Ngày 10", message: "Gần tới ngày rồi, em hồi hộp lắm.", video: "" },
+    { date: "2026-02-24", title: "Ngày 11", message: "Ngày mai thôi, anh về rồi 🤍", video: "" },
+    { date: "2026-02-25", title: "Ngày 12 – Anh về 💐", message: "Chào mừng anh trở về với em.", video: "" }
+  ];
+
+  const today = new Date().toISOString().split("T")[0];
+  const container = document.getElementById("content");
+
+  gifts.forEach(gift => {
+    const box = document.createElement("div");
+    box.className = "gift";
+
+    if (today >= gift.date) {
+      box.innerHTML = `
+        <h2>🎁 ${gift.title}</h2>
+        <p>${gift.message}</p>
+        ${gift.video ? `
+          <video controls>
+            <source src="${gift.video}" type="video/mp4">
+          </video>
+        ` : ""}
+      `;
+    } else {
+      box.classList.add("locked");
+      box.innerHTML = `
+        <h2>🔒 ${gift.title}</h2>
+        <p>Sẽ mở vào ngày ${gift.date}</p>
+      `;
+    }
+
+    container.appendChild(box);
+  });
+</script>
+
+</body>
+</html>
